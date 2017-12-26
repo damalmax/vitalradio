@@ -5,6 +5,7 @@ defmodule Vitalradio.Mixfile do
     [
       apps_path: "apps",
       start_permanent: Mix.env == :prod,
+      compilers: [:rustler] ++ Mix.compilers,
       deps: deps()
     ]
   end
