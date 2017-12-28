@@ -5,13 +5,25 @@ defmodule SkypeListener.Mixfile do
     [
       app: :skype_listener,
       version: "0.1.0",
+      build_path: "../../_build",
+      config_path: "../../config/config.exs",
+      deps_path: "../../deps",
+      lockfile: "../../mix.lock",
       elixir: "~> 1.5",
-      rustler_crates: rustler_crates(), # Define Rust crates
-      compilers: [:rustler] ++ Mix.compilers, # Add compiler for the native Rust code
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      deps: deps(),
+      rustler_crates: rustler_crates(), # Define Rust crates
+      compilers: [:rustler] ++ Mix.compilers  # Add compiler for the native Rust code
     ]
   end
+
+  # Run "mix help compile.app" to learn about applications.
+  def application do
+    [
+      extra_applications: [:logger]
+    ]
+  end
+
 
   # Dependencies listed here are available only for this
   # project and cannot be accessed from applications inside
